@@ -1,0 +1,6 @@
+#No compiled PDFs
+*.pdf
+
+#No LaTeX auxiliaries
+*.aux
+*.log
