@@ -1,4 +1,4 @@
-BOOK_NAME=geneve_1564
+BOOK_NAME=kids_bom
 TEXINPUTS=microtype:
 FONTSDIR=fonts
 TODAY=$(shell date --iso)
@@ -14,6 +14,6 @@ pdf: $(addsuffix .pdf,$(TARGETS))
 	OSFONTDIR=$(FONTSDIR) TEXINPUTS=$(TEXINPUTS) lualatex -shell-escape -interaction=$(LATEX_INTERACTION) $<
 
 clean:
-	rm -f geneve_1564.pdf geneve_1564_modern.pdf *.ps *.aux *.log *.out *.lol
+	rm -f kids_bom.pdf *.ps *.aux *.log *.out *.lol
 	rm -f *.idx *.ind *.ilg *.toc *.dvi
 
