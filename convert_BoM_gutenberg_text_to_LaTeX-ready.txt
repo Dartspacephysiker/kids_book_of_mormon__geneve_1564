@@ -3,11 +3,20 @@ Hecipe:
 1. Set buffer mode to latex-mode, make fill paragraph 10000 or something like that.
 2. Highlight all text in buffer, run M-q to get rid of newlines in verses
 
+3. To fix Chapter markers, use this regex:
+
+"^Chapter[[:blank:]]+\([0-9]+\)"
+
+Replace with
+
+""
+
 3. Do Regexp I-search with C-M-s, then do M-e to copy this regex in:
 
 "
-Mosiah[[:blank:]]+[0-9]+:[0-9]+[[:blank:]]+[0-9]+[[:blank:]]\(.*\)"
+\(Mosiah[[:blank:]]+[0-9]+:[0-9]+\)[[:blank:]]+[0-9]+[[:blank:]]\(.*\)"
 
 Then replace with
-"\\bverse \\iffalse \1 \\fi
-\1" 
+"%\1
+\\bverse \\iffalse \2 \\fi
+\2" 

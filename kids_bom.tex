@@ -7,8 +7,8 @@
 \usepackage[newcommands]{ragged2e}
 
 % For references
-% \usepackage{bibleref-french}
-\usepackage{bibleref}
+\usepackage{bibleref-french}
+% \usepackage{bibleref}
 \biblerefstyle{colombefull}
 %\biblerefstyle{text}
 \addbiblebook{1 Ne.}{1 Nephi}%
@@ -106,11 +106,12 @@
 }
 \pagestyle{Biblestyle}
 
+\renewcommand{\thefootnote}{\textit{\alph{footnote}}}
+
 \begin{document}
 
-
 \input{books/intro}
-\input{books/01_1nephi}
+% \input{books/01_1nephi}
 \input{books/02_2nephi}
 \input{books/03_jacob}
 \input{books/04_enos}
