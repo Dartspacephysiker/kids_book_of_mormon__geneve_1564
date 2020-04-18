@@ -14,6 +14,6 @@ pdf: $(addsuffix .pdf,$(TARGETS))
 	OSFONTDIR=$(FONTSDIR) TEXINPUTS=$(TEXINPUTS) lualatex -shell-escape -interaction=$(LATEX_INTERACTION) $<
 
 clean:
-	rm -f *.pdf *.ps *.aux *.log *.out *.lol
+	rm -f geneve_1564.pdf geneve_1564_modern.pdf *.ps *.aux *.log *.out *.lol
 	rm -f *.idx *.ind *.ilg *.toc *.dvi
 
