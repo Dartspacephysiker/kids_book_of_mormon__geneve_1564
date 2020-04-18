@@ -4,3 +4,6 @@
 #No LaTeX auxiliaries
 *.aux
 *.log
+
+#No emacs temp files
+*~
