@@ -1,0 +1,15 @@
+11: 29 versees
+12: 37 verses
+13: 35 verses
+14: 12 verses
+15: 31 verses
+16: 15 verses
+17: 20 verses
+
+
+sum([29,37,35,12,31,15,20])/7 = 25.571428571428573
+
+So 25 verses a day!
+
+
+2020/04/27 Did 18 verses
