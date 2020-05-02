@@ -6,14 +6,13 @@
 16: 15 verses
 17: 20 verses
 
-
 sum([29,37,35,12,31,15,20])/7 = 25.571428571428573
 
 So 25 verses a day!
 
-
-2020/04/27 Did 18 verses ( 18/25  tot, behind 7 verses)
-2020/04/28 Did 11 verses ( 29/50  tot, behind 21 verses)
-2020/04/29 Did 20 verses ( 49/75  tot, up to Mosiah 12:20. Behind 26 verses.)
-2020/04/30 Did 31 verses ( 80/100 tot, up to Mosiah 13:14. Behind 20 verses.)
-2020/05/01 Did 24 verses (104/125 tot, up to Mosiah 14:3 . Behind 21 verses.)
+2020/04/27 Did 18 verses ( 18/25 , behind 7 verses)
+2020/04/28 Did 11 verses ( 29/50 , behind 21 verses)
+2020/04/29 Did 20 verses ( 49/75 , to Mosiah 12:20. Behind 26 verses.)
+2020/04/30 Did 31 verses ( 80/100, to Mosiah 13:14. Behind 20 verses.)
+2020/05/01 Did 24 verses (104/125, through Mosiah 14:3 . Behind 21 verses.)
+2020/05/02 Did 37 verses (141/150, through Mosiah 15:28. Behind  9 verses. ~127 minutes.) 
