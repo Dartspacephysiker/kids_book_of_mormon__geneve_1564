@@ -41,10 +41,6 @@
 
 \usepackage{trimspaces}
 
-% Make footnotes restart every page
-\usepackage{perpage} %the perpage package
-\MakePerPage{footnote} %the perpage package command
-
 % Balance twocolumn
 \usepackage{balance}
 
@@ -119,6 +115,11 @@
 
 % \newcommand{\Gpposs}{their }
 \newcommand{\Gpposs}{God's }
+
+% Make footnotes restart every page
+% \usepackage{perpage} %the perpage package
+% \MakePerPage{footnote} %the perpage package command
+\usepackage[perpage]{footmisc}
 
 \begin{document}
 
