@@ -37,12 +37,12 @@
 \usepackage{pgffor}
 \usepackage{ifthen}
 \usepackage{lettrine}
-\usepackage[all]{nowidow}
+% \usepackage[all]{nowidow}
 
 \usepackage{trimspaces}
 
 % Balance twocolumn
-\usepackage{balance}
+% \usepackage{balance}
 
 \title{The Book of Mormon}
 
@@ -81,6 +81,7 @@
 \newcommand\bchapter{%
   \addtocounter{section}{1}
   \setcounter{verse}{0}
+  \setcounter{footnote}{0}
 }
 
 % Adjust headings
@@ -115,11 +116,6 @@
 
 % \newcommand{\Gpposs}{their }
 \newcommand{\Gpposs}{God's }
-
-% Make footnotes restart every page
-% \usepackage{perpage} %the perpage package
-% \MakePerPage{footnote} %the perpage package command
-\usepackage[perpage]{footmisc}
 
 \begin{document}
 
