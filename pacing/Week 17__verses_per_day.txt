@@ -1,0 +1,14 @@
+04: 30 versees
+05: 15 verses
+06:  7 verses
+07: 33 verses
+08: 21 verses
+09: 19 verses
+10: 22 verses
+
+sum([30,15,7,33,21,19,22]) = 147
+
+So 21 verses a day!
+
+
+At end of this week, will have completed 147/6604 verses, 1 total weeks. 
