@@ -1,0 +1,21 @@
+May 18–24 (Week 20): Mosiah 25–28
+25: 24 verses
+26: 39 verses
+27: 37 verses
+28: 20 verses
+
+sum([24,39,37,20]) = 120 verses
+120/7 = 17.14 verses/day
+
+So 17 verses a day!
+
+2020/05/11 Did verses (/, through . Behind  verses. ~ minutes.)
+2020/05/12 Did verses (/, through . Behind  verses. ~ minutes.)
+2020/05/13 Did verses (/, through . Behind  verses. ~ minutes.)
+2020/05/14 Did  verses (/, through . Behind  verses. ~ minutes.)
+2020/05/15 Did  verses (/, through . Behind  verses. ~ minutes.)
+2020/05/16 Did  verses (/, through . Behind  verses. ~ minutes.) 
+2020/05/17 Did  verses (/, through . Behind  verses. ~ minutes.) 
+
+
+At end of this week, will have completed 652/6604 verses, 4 total weeks. 
