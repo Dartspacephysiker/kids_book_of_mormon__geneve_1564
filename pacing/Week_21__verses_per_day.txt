@@ -1,0 +1,22 @@
+May 25–31 (Week 21): Mosiah 29–Alma 4
+29: 47 verses
+ 1: 33 verses
+ 2: 38 verses
+ 3: 27 verses
+ 4: 20 verses
+
+sum([27,33,38,27,20]) = 145 verses
+145/7 = 20.71 verses/day
+
+So 21 verses a day!
+
+2020/05/18 Did  verses (/21 , through . Behind  verses. ~ minutes.)
+2020/05/19 Did  verses (/42 , through . Behind  verses. ~ minutes.)
+2020/05/20 Did  verses (/63 , through . Behind  verses. ~ minutes.)
+2020/05/21 Did  verses (/84 , through . Behind  verses. ~ minutes.)
+2020/05/22 Did  verses (/105, through . Behind  verses. ~ minutes.)
+2020/05/23 Did  verses (/126, through . Behind  verses. ~ minutes.) 
+2020/05/24 Did  verses (/147, through . Behind  verses. ~ minutes.) 
+
+
+At end of this week, will have completed 797/6604 verses, 5 total weeks. 
