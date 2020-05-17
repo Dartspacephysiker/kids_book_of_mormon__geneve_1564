@@ -1,8 +1,12 @@
 # pdfpref=OUT/ICBoM__20__May_18-24__Mosiah_25-28;
 
-startpage=56;
-stoppage=77;
-pdfpref=OUT/ICBoM__20__May_11-17__Mosiah_18-24;
+startpage=78;
+stoppage=91;
+pdfpref=OUT/ICBoM__21__May_18-24__Mosiah_25-28;
+
+# startpage=56;
+# stoppage=77;
+# pdfpref=OUT/ICBoM__20__May_11-17__Mosiah_18-24;
 
 # startpage=37;
 # stoppage=56;
