@@ -5,13 +5,24 @@ Hecipe:
 
 3. To fix Chapter markers, use this regex:
 
-"^Chapter[[:blank:]]+\([0-9]+\)"
+!!!!!!!"^Chapter[[:blank:]]+\([0-9]+\)"
+!!!!!!!
+!!!!!!!Replace with
+!!!!!!!
+!!!!!!!""
 
+!!!NOTE, something not quite right with the above.
+!!!I guess what you really want to do is find
+
+"^[BOOKNAME] [0-9]+
+\(Chapter [0-9]+\)
+"
 Replace with
 
-""
+"\1
+\\bchapter"
 
-3. Do Regexp I-search with C-M-s, then do M-e to copy this regex in:
+4. Do Regexp I-search with C-M-s, then do M-e to copy this regex in:
 
 "
 \(Mosiah[[:blank:]]+[0-9]+:[0-9]+\)[[:blank:]]+[0-9]+[[:blank:]]\(.*\)"
