@@ -97,7 +97,11 @@
 % http://tex.stackexchange.com/questions/26392/titlesec-toptitlemarks-and-bottitlemarks-broken-when-section-not-called-explic
 % could also be interesting
 
-\newcommand*{\cadr}{\nobreak\,\nobreak\mbox{---}\nobreak\,\nobreak}
+%This is the em-dash at top of page that sits in between first verse and last verse on current page
+\newcommand*{\cadr}{\nobreak\,\nobreak\mbox{---}\nobreak\,\nobreak} 
+
+% This creates the page style "Biblestyle", which puts the book, chapter, and verse range in the page heading
+% the command bref above somehow handles the references
 \newmarkset{bref}
 \newextramark{bref}{\bref}
 \newpagestyle{Biblestyle}{
@@ -114,6 +118,7 @@
 
 \definecolor{cccolor}{rgb}{.67,.7,.67}
 
+% An idea for consistently handling the possessive form of God's name
 % \newcommand{\Gpposs}{their }
 \newcommand{\Gpposs}{God's }
 
