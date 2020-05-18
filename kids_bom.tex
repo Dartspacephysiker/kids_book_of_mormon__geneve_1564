@@ -71,12 +71,24 @@
 }
 \makeatother
 
+% ORIGINAL
 \newcommand\curbook{}
 \newcommand{\bbook}[2]{%
   \chapter{#1}
   \setcounter{section}{0}
   \renewcommand\curbook{#2}
 }
+%   NEW, HOPEFULLY NO PAGE BREAK
+%   DOESN'T WORK
+% \newcommand\curbook{}
+% \newcommand{\bbook}[2]{%
+%   \begingroup
+%   \let\cleardoublepage\relax
+%   \chapter{#1}
+%   \endgroup
+%   \setcounter{section}{0}
+%   \renewcommand\curbook{#2}
+% }
 
 \newcommand\bchapter{%
   \addtocounter{section}{1}
