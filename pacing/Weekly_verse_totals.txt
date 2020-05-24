@@ -4,7 +4,7 @@ WeekCnt,WeekOfYear,NChapters,NVerses,CumVerses
  3,19,7,206,532
  4,20,4,120,652
  5,21,5,145,797
- 6,22,
+ 6,22,3,97 ,914
  7,23, 
  8,24, 
  9,25, 
