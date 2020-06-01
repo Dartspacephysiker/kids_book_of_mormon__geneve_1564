@@ -1,0 +1,22 @@
+Jun 8–14 (Week 23): Alma 8–12
+ 8: 32 verses
+ 9: 34 verses
+10: 32 verses
+11: 46 verses
+12: 37 verses
+
+sum([32,34,32,46,37]) = 181 verses
+181/7 = 25.9 verses/day
+
+So 26 verses a day!
+
+2020/06/01 Did  verses (/ 26, through Alma . Behind  verses. ~ minutes.)
+2020/06/02 Did  verses (/ 52, through Alma . Behind  verses. ~ minutes.)
+2020/06/03 Did  verses (/ 78, through Alma . Behind  verses. ~ minutes.)
+2020/06/04 Did  verses (/104, through Alma . Behind  verses. ~ minutes.)
+2020/06/05 Did  verses (/130, through Alma . Behind  verses. ~ minutes.)
+2020/06/06 Did  verses (/156, through Alma . Behind  verses. ~ minutes.) 
+2020/06/07 Did  verses (/182, through Alma . Behind  verses. ~ minutes.) 
+
+
+At end of this week, will have completed 1095/6604 verses, 7 total weeks. 
