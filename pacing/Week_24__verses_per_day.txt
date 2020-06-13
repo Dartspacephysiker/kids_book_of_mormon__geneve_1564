@@ -9,12 +9,12 @@ sum([31,29,19,21]) = 100 verses
 
 So 15 verses a day!
 
-2020/06/08 Did 15 verses (15/15 , through Alma 13:15. Behind  0 verses. ~70 minutes.)
-2020/06/09 Did 16 verses (31/30 , through Alma 13:31. Behind -1 verses. ~65 minutes.)
-2020/06/10 Did 17 verses (48/45 , through Alma 14:17. Behind -3 verses. ~45 minutes.)
-2020/06/11 Did 16 verses (64/60 , through Alma 15:4 . Behind -4 verses. ~50 minutes.)
-2020/06/12 Did 15 verses (79/75 , through Alma 15:19. Behind -4 verses. ~40 minutes.)
-2020/06/13 Did verses (/90 , through Alma :. Behind  verses. ~ minutes.) 
+2020/06/08 Did 15 verses (15 /15 , through Alma 13:15. Behind  0  verses. ~70 minutes.)
+2020/06/09 Did 16 verses (31 /30 , through Alma 13:31. Behind -1  verses. ~65 minutes.)
+2020/06/10 Did 17 verses (48 /45 , through Alma 14:17. Behind -3  verses. ~45 minutes.)
+2020/06/11 Did 16 verses (64 /60 , through Alma 15:4 . Behind -4  verses. ~50 minutes.)
+2020/06/12 Did 15 verses (79 /75 , through Alma 15:19. Behind -4  verses. ~40 minutes.)
+2020/06/13 Did 21 verses (100/90 , through Alma 16:21. Behind -10 verses. ~60 minutes.) 
 2020/06/14 Did verses (/105, through Alma :. Behind  verses. ~ minutes.) 
 
 
