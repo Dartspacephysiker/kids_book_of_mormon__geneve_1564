@@ -5,15 +5,24 @@
 
 use strict; 
 use warnings; 
-  
+# use feature 'unicode_strings';
+# use utf8;
+
+use List::MoreUtils 'none';
+
 sub main 
 { 
+    my $curchapter = -1;
     my @wantchapters = (17..22);
     my @gotchapters = ();
-    my $bombook = 'Alma'
-    my $infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/kids_bom.tex'; 
+    my $upcasebook = "ALMA";
+    my $booknum = "09";
+    my $bombook = 'Alma';
+    my $infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
     my $utfil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/kids_bom_selection.html'; 
+    print "Opening inputfile : $infil\n";
     open(inFH, $infil) or die("Infil $infil not found"); 
+    print "Opening outputfile: $utfil\n";
     open(utFH, '>', $utfil) or die $!;
       
     while(my $String = <inFH>) 
@@ -21,10 +30,27 @@ sub main
 
 	# 0. Gather all chapters wanted
         if($String =~ /^%Chapter (\d+)/) { 
-            print "Found $String\n"; 
-	    push @gotchapters, '';
-	    print "gotchapters: @gotchapters\n";     # Foo Bar Moo
+            # print "Found $String\n"; 
+	    push @gotchapters, $1;
+	    # print "gotchapters: @gotchapters\n";     # Foo Bar Moo
+
+	    $curchapter = $1;
+
+	    if ( $1 ~~ @wantchapters ) {
+		print "Current chapter: $bombook $1\n";
+	    }
+
         } 
+
+	if ( none { $_ eq $curchapter } @wantchapters ) {
+	    # Do stuff
+	    next;
+	}  
+
+	# if not ( $1 ~~ @wantchapters ) {
+	#     next;
+	# }
+	
 
 	# 1. Replace this regexp
 	# "^\\bverse.*
@@ -33,12 +59,12 @@ sub main
 	# ""
 	# That is, skip this line!
         if($String =~ /^\\bverse/) { 
-	    print "Found a bverse\n";
+	    # print "Found a bverse\n";
 	    next;
         } 
 
         if($String =~ /^\\bchapter/) { 
-            print "Found a bchapter string\n"; 
+            # print "Found a bchapter string\n"; 
 	    next;
         } 
 
@@ -50,7 +76,7 @@ sub main
 	# \2 "
         if($String =~ /^%$bombook (\d+):(\d+)/) { 
             print "Found zis: $String\n"; 
-	    $String = "<!-- Alma \1:\2 -->\n<b>\2</b>"
+	    $String = "<!-- Alma $1:$2 -->\n<b>$2</b>"
         } 
 
 	# 3. Replace "^\([0-9]+\) \(.*\)"
@@ -64,34 +90,31 @@ sub main
 	# "<div dir="ltr" style="text-align: left;" trbidi="on">
 	#   <a href="#09_ALMA_\1"><b><font size="5">Alma \1</font></b></a>
 	# </div>"
-	$String =~ s/^Chapter (\d+\)/<div dir="ltr" style="text-align: left;" trbidi="on">\n  <a href="#09_ALMA_$1"><b><font size="5">uc($bombook) $1</font></b></a>\n</div>";
+	$String =~ s/^%Chapter (\d+)/<div dir="ltr" style="text-align: left;" trbidi="on">\n  <a href="#${booknum}_${upcasebook}_$1"><b><font size="5">$upcasebook $1<\/font><\/b><\/a>\n<\/div>/g;
 
 	# 5. Replace "---" with "—"
-	$String =~ s/---/—;
+	$String =~ s/---/—/g;
 
 	# 6. Regex-replace "\footnote{.*}" with ""
 
 	# 7. Replace "``" with "&ldquo;"
-	$String =~ s/``/&ldquo;
+	$String =~ s/``/&ldquo/g;
 
 	# 8. Replace "''" with "&rdquo;"
-	$String =~ s/''/&rdquo;
+	$String =~ s/''/&rdquo/g;
 
 	# 9. Replace "\lq" with "&lsquo;"
-	$String =~ s/\\lq/&lsquo;
+	$String =~ s/\\lq /&lsquo/g;
 
 	# 10. Replace "\rq" with "&rsquo;"
-	$String =~ s/\\rq/&rsquo;
-
-        # if($String =~ /\bthe\b/) 
-        # { 
-        #     print "$String \n"; 
-        # } 
+	$String =~ s/\\rq /&rsquo/g;
 
 	# Write to utFH
-	print utFH $String
+	print utFH "$String\n";
     } 
+    print "Closing inputfile : $infil\n";
     close(inFH); 
+    print "Closing outputfile: $utfil\n";
     close(utFH); 
 } 
 main(); 
