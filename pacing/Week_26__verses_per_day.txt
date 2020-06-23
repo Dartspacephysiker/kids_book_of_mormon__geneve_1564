@@ -12,8 +12,8 @@ sum([18,30,17,37,30,14,17]) = 163 verses
 
 So 24 verses a day!
 
-2020/06/22 Did 24 verses (24/24, through Alma 24:6 . Behind  0 verses. ~60 minutes.)
-2020/06/23 Did  verses (/48 , through Alma . Behind verses. ~ minutes.)
+2020/06/22 Did 24 verses (24/24 , through Alma 24:6 . Behind  0 verses. ~60 minutes.)
+2020/06/23 Did 24 verses (48/48 , through Alma 24:30. Behind  0 verses. ~60 minutes.)
 2020/06/24 Did  verses (/72 , through Alma . Behind verses. ~ minutes.)
 2020/06/25 Did  verses (/96 , through Alma . Behind verses. ~ minutes.)
 2020/06/26 Did  verses (/120, through Alma . Behind verses. ~ minutes.)
