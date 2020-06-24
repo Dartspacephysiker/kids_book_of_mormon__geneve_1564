@@ -9,20 +9,48 @@ use warnings;
 # use utf8;
 
 use List::MoreUtils 'none';
+# use Switch;
+use Getopt::Long;
 
 sub main 
 { 
+    # my $week = 24;
+
+    # switch($week) {
+    # 	case 24 {
+    # 	    my @wantchapters = (13..16);
+    # 	}
+    # 	case 25 {
+    # 	    my @wantchapters = (17..22);
+    # 	}
+    # }
+
+    # my ($chpstart, $chpend) = @ARGV;
+
+    my %args;
+    GetOptions(\%args,
+	       "startchapter=s",
+	       "stopchapter=s",
+	) or die "Invalid arguments!";
+    die "Missing -startchapter!" unless $args{startchapter};
+    die "Missing -stopchapter!" unless $args{stopchapter};
+
+    my $startchapter = $args{startchapter};
+    my $stopchapter = $args{stopchapter};
+
     my $curchapter = -1;
-    my @wantchapters = (17..22);
+    my @wantchapters = (${startchapter}..${stopchapter});
     my @gotchapters = ();
     my $upcasebook = "ALMA";
     my $booknum = "09";
     my $bombook = 'Alma';
     my $infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
     my $utfil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/kids_bom_selection.html'; 
-    print "Opening inputfile : $infil\n";
+
+    print "Getting $bombook chapters ${startchapter}--${stopchapter}\n\n";
+    print "inputfile : $infil\n";
     open(inFH, $infil) or die("Infil $infil not found"); 
-    print "Opening outputfile: $utfil\n";
+    print "outputfile: $utfil\n";
     open(utFH, '>', $utfil) or die $!;
       
     while(my $String = <inFH>) 
@@ -75,7 +103,7 @@ sub main
 	# "<!-- Alma \1:\2 -->
 	# \2 "
         if($String =~ /^%$bombook (\d+):(\d+)/) { 
-            print "Found zis: $String\n"; 
+            # print "Found zis: $String\n"; 
 	    $String = "<!-- Alma $1:$2 -->\n<b>$2</b>"
         } 
 
@@ -112,9 +140,10 @@ sub main
 	# Write to utFH
 	print utFH "$String\n";
     } 
-    print "Closing inputfile : $infil\n";
+    # print "Closing inputfile : $infil\n";
+    print "Closing inputfile\n";
     close(inFH); 
-    print "Closing outputfile: $utfil\n";
+    print "Closing outputfile\n";
     close(utFH); 
 } 
 main(); 
