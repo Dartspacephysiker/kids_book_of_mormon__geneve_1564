@@ -27,32 +27,112 @@ sub main
 
     # my ($chpstart, $chpend) = @ARGV;
 
-    my %args;
-    GetOptions(\%args,
-	       "startchapter=s",
-	       "stopchapter=s",
-	) or die "Invalid arguments!";
-    die "Missing -startchapter!" unless $args{startchapter};
-    die "Missing -stopchapter!" unless $args{stopchapter};
+    # Parse command line
+    # my %args;
+    # GetOptions(\%args,
+    # 	       "startchapter=s",
+    # 	       "stopchapter=s",
+    # 	) or die "Invalid arguments!";
+    # die "Missing -startchapter!" unless $args{startchapter};
+    # die "Missing -stopchapter!" unless $args{stopchapter};
 
-    my $startchapter = $args{startchapter};
-    my $stopchapter = $args{stopchapter};
+    # my $startchapter = $args{startchapter};
+    # my $stopchapter = $args{stopchapter};
 
+    ########################################
+    # Variables for HTML header for this week's reading
+    # Week 26
+    my $weeknum = 26;
+    my $startchapter = 17;
+    my $stopchapter = 22;
+    my $readingstr = "June 22–28 (Week ${weeknum})";
+
+    # Week 27
+    my $weeknum = 27;
+    my $startchapter = 23;
+    my $stopchapter = 29;
+    my $readingstr = "June 29–July 5 (Week ${weeknum})";
+
+    my $h3weekstr = "Week ${weeknum}: Alma ${startchapter}–${stopchapter}";
+    my $weekminusone = ${weeknum}-1;
+
+    # Other variables
     my $curchapter = -1;
     my @wantchapters = (${startchapter}..${stopchapter});
     my @gotchapters = ();
     my $upcasebook = "ALMA";
     my $booknum = "09";
     my $bombook = 'Alma';
+    my $headfil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/scripts/blogentry_header.html'; 
     my $infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
     my $utfil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/kids_bom_selection.html'; 
 
+    my $holdoverstring = "";	# (sometimes) junk variable
+    my $addholdover = 0;
+
     print "Getting $bombook chapters ${startchapter}--${stopchapter}\n\n";
-    print "inputfile : $infil\n";
-    open(inFH, $infil) or die("Infil $infil not found"); 
     print "outputfile: $utfil\n";
     open(utFH, '>', $utfil) or die $!;
       
+    # Write header to outputfile
+    open(headerFH, $headfil) or die $!;
+    while(my $String = <headerFH>) 
+    { 
+        if($String =~ /Week BLAH/) { 
+	    $String =~ s/Week BLAH: BLAH/$h3weekstr/g;
+	}
+
+        if($String =~ /DATERANGEBLAH/) { 
+	    $String =~ s/DATERANGEBLAH/${readingstr}/g;
+	    $String =~ s/WEEKMINUSONE/${weekminusone}/g;
+	}
+	
+	# Write to utFH
+	# print "HEADER:  $String\n";
+	print utFH $String;
+
+    }
+    print "Closing headerfile\n";
+    close(headerFH); 
+
+    ########################################
+    # WORK WITH .TEX FILE
+    print "maininputfile : $infil\n";
+
+    # Get chapters we are going to do, make tags
+    my $jumptostr = 'Jump to: ';
+
+    open(inFH, $infil) or die("Infil $infil not found"); 
+    my $isfirst = 1;
+    while(my $String = <inFH>) 
+    { 
+
+	# 0. Gather all chapters wanted
+        if($String =~ /^%Chapter (\d+)/) { 
+
+	    if ( $1 ~~ @wantchapters ) {
+		push @gotchapters, $1;
+		# print "Current chapter: $bombook $1\n";
+
+		if ($isfirst eq 1) {
+		    $jumptostr = $jumptostr . " <a href=\"#${booknum}_${upcasebook}_$1\"><b>${bombook} ${1}</b></a>";
+		    $isfirst = 0;
+		} else {
+		    $jumptostr = $jumptostr . " <a href=\"#${booknum}_${upcasebook}_$1\"><b> ${1}</b></a>";
+		}
+	    }
+
+        } 
+
+    }
+    print "gotchapters: @gotchapters\n";     # Foo Bar Moo
+    print utFH "<div dir=\"ltr\" style=\"text-align: left;\" trbidi=\"on\">\n";
+    print utFH "$jumptostr\n";
+    print utFH "</div>\n\n";
+    close(inFH); 
+
+    # Write chapters and verses to outputfile
+    open(inFH, $infil) or die("Infil $infil not found"); 
     while(my $String = <inFH>) 
     { 
 
@@ -104,8 +184,13 @@ sub main
 	# \2 "
         if($String =~ /^%$bombook (\d+):(\d+)/) { 
             # print "Found zis: $String\n"; 
-	    $String = "<!-- Alma $1:$2 -->\n<b>$2</b>"
-        } 
+	    $String = "<!-- Alma $1:$2 -->\n<b>$2</b>";
+	    $holdoverstring = $String;
+	    $addholdover = 1;
+	    next;
+        } # else {
+	#     $holdoverstring = "";
+	# }
 
 	# 3. Replace "^\([0-9]+\) \(.*\)"
 	# with
@@ -118,7 +203,7 @@ sub main
 	# "<div dir="ltr" style="text-align: left;" trbidi="on">
 	#   <a href="#09_ALMA_\1"><b><font size="5">Alma \1</font></b></a>
 	# </div>"
-	$String =~ s/^%Chapter (\d+)/<div dir="ltr" style="text-align: left;" trbidi="on">\n  <a href="#${booknum}_${upcasebook}_$1"><b><font size="5">$upcasebook $1<\/font><\/b><\/a>\n<\/div>/g;
+	$String =~ s/^%Chapter (\d+)/<br \/><div dir="ltr" style="text-align: left;" trbidi="on">\n  <a id="${booknum}_${upcasebook}_$1"><b><font size="5">$bombook $1<\/font><\/b><\/a> <a href="#top">(go to top)<\/a>\n<\/div>/g;
 
 	# 5. Replace "---" with "—"
 	$String =~ s/---/—/g;
@@ -138,7 +223,11 @@ sub main
 	$String =~ s/\\rq /&rsquo/g;
 
 	# Write to utFH
-	print utFH "$String\n";
+	if ($addholdover eq 1) {
+	    $String = "$holdoverstring $String<br />";
+	    $addholdover = 0;
+	} 
+	print utFH "${String}\n";
     } 
     # print "Closing inputfile : $infil\n";
     print "Closing inputfile\n";
