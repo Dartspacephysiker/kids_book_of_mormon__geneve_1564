@@ -37,7 +37,16 @@ sub main
     ########################################
     # Variables for HTML header for this week's reading
 
-    my $weeknum = 28;
+    if(@ARGV < 1){
+	print("Usage: $0 WEEKNUM\n");
+	die;
+    }
+    # my $weeknum = 28;
+    my $weeknum = $ARGV[0];
+
+    # print("WEEKNUM: $weeknum\n");
+    # exit
+
     my $startchapter;
     my $stopchapter;
     my $readingstr;
@@ -91,6 +100,7 @@ sub main
 
     # Other variables
     my $curchapter = -1;
+    my $curverse = -1;
     my @wantchapters = (${startchapter}..${stopchapter});
     my @gotchapters = ();
     my $upcasebook = "ALMA";
@@ -108,6 +118,7 @@ sub main
     my @footnotes = ();
     my @footalph = ("a".."z");
     my $footcounter = 0;
+    my $totfootcounter = 0;
 
     print "Getting $bombook chapters ${startchapter}--${stopchapter}\n\n";
     print "outputfile: $utfil\n";
@@ -192,6 +203,9 @@ sub main
 
 	    $curchapter = $1;
 
+	    # Reset footnote counter
+	    $footcounter = 0;
+
 	    if ( $1 ~~ @wantchapters ) {
 		print "Current chapter: $bombook $1\n";
 	    }
@@ -235,6 +249,7 @@ sub main
 	    $String = "<!-- Alma $1:$2 -->\n<b>$2</b>";
 	    $holdoverstring = $String;
 	    $addholdover = 1;
+	    $curverse = $2;
 	    next;
         } # else {
 	#     $holdoverstring = "";
@@ -266,7 +281,7 @@ sub main
 	    $havefootnotes = 1;
 
 	    # Create the tag
-	    my $foottag = "${booknum}_${upcasebook}_${curchapter}_foot$footalph[${footcounter}]";
+	    my $foottag = "${booknum}_${upcasebook}_${curchapter}_${curverse}_foot$footalph[${footcounter}]";
 	    my $foottagfull = "<a id=\"" . $foottag . "\"><sup>$footalph[${footcounter}]<\/sup><\/a>";
 
 	    # Get the footnote
@@ -276,16 +291,17 @@ sub main
 	    $footnote = $foottagfull . $footnote;
 
 	    push @footnotes, $footnote;
-	    print("Got a footnote: $footnotes[$#footnotes]\n");
+	    print("Got a footnote: $footnotes[$#footnotes]");
 
 	    # Add href to verse
 	    
 	    # Replace footnote text with foottag
 	    $String =~ s/\\footnote\{.*}/<a href=\"#${foottag}\"><sup>$footalph[${footcounter}]<\/sup><\/a>/g;
 
-	    print("$String");
+	    # print("$String");
 
 	    $footcounter = $footcounter + 1;
+	    $totfootcounter = $totfootcounter + 1;
 
 	}
 
@@ -314,7 +330,7 @@ sub main
 
     if ($havefootnotes eq 1) {
 
-	print("Adding ${footcounter} footnotes to html output:\n");
+	print("Adding ${totfootcounter} footnotes to html output:\n");
 
 	print utFH "<br />\n";
 	print utFH "<br />\n";
