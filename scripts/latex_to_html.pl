@@ -1,8 +1,3 @@
-# ;; This buffer is for text that is not saved, and for Lisp evaluation.
-# ;; To create a file, visit it with C-x C-f and enter text in its buffer.
-
-# TODO: Auto-generate links at top of document
-
 use strict; 
 use warnings; 
 # use feature 'unicode_strings';
@@ -41,17 +36,55 @@ sub main
 
     ########################################
     # Variables for HTML header for this week's reading
-    # Week 26
-    my $weeknum = 26;
-    my $startchapter = 17;
-    my $stopchapter = 22;
-    my $readingstr = "June 22–28 (Week ${weeknum})";
 
-    # Week 27
-    my $weeknum = 27;
-    my $startchapter = 23;
-    my $stopchapter = 29;
-    my $readingstr = "June 29–July 5 (Week ${weeknum})";
+    my $weeknum = 23;
+    my $startchapter;
+    my $stopchapter;
+    my $readingstr;
+    my $GoogleDrivelink;
+
+    if( $weeknum eq 28 ){
+	# Week 28
+	$startchapter = 30;
+	$stopchapter = 31;
+	$readingstr = "July 6–12 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1E3BXZCO7CnZbLYcmj83l7RZ6BSCxppG3/view?usp=sharing";
+    } elsif($weeknum == 27){
+	# Week 27
+	$startchapter = 23;
+	$stopchapter = 29;
+	$readingstr = "June 29–July 5 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1-h6MIaaG6r7kUhgAlxfd42WJ2cqpIGEI/view?usp=sharing";
+    } elsif ($weeknum == 26){
+	$startchapter = 17;
+	$stopchapter = 22;
+	$readingstr = "June 22–28 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/10ZujvpmwmWV3nfqhthvjfjMf2LSp8cMx/view?usp=sharing";
+    } elsif ($weeknum == 25){
+	$startchapter = 13;
+	$stopchapter = 16;
+	$readingstr = "June 15–21 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1rHFdRQasZJEmIrc5Iw1fM3IBtPNKSdVO/view?usp=sharing";
+    } elsif ($weeknum == 24){
+	$startchapter = 8;
+	$stopchapter = 12;
+	$readingstr = "June 8–14 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1dP5Hz--e7HuHCGS58U1WmOHatPGV2U8c/view?usp=sharing";
+    } elsif ($weeknum == 23){
+	$startchapter = 5;
+	$stopchapter = 7;
+	$readingstr = "June 1–7 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1k8jQYEh76CdU6M9jTNwCOnpVmm0zOVCD/view?usp=sharing";
+    } else {
+	die "Couldn't locate the week number (${weeknum}) you're talking about!\n";
+    }
+
+    # INFO
+    print("Weeknum        : ${weeknum}\n");
+    print("startchapter   : ${startchapter}\n");
+    print("stopchapter    : ${stopchapter}\n");
+    print("readingstr     : ${readingstr}\n");
+    print("GoogleDrivelink: ${GoogleDrivelink}\n");
 
     my $h3weekstr = "Week ${weeknum}: Alma ${startchapter}–${stopchapter}";
     my $weekminusone = ${weeknum}-1;
@@ -65,7 +98,7 @@ sub main
     my $bombook = 'Alma';
     my $headfil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/scripts/blogentry_header.html'; 
     my $infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
-    my $utfil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/kids_bom_selection.html'; 
+    my $utfil = "/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/OUT/kids_bom_selection__${weeknum}__${bombook}_${startchapter}-${stopchapter}.html"; 
 
     my $holdoverstring = "";	# (sometimes) junk variable
     my $addholdover = 0;
@@ -87,6 +120,15 @@ sub main
 	    $String =~ s/WEEKMINUSONE/${weekminusone}/g;
 	}
 	
+        if($String =~ /TOPWEEKBLAH/) { 
+	    $String =~ s/TOPWEEKBLAH/TOPWEEK${weeknum}/g;
+	}
+
+
+        if($String =~ /INSERTGOOGDRIVELINKHERE/) { 
+	    $String =~ s/INSERTGOOGDRIVELINKHERE/${GoogleDrivelink}/g;
+        } 
+
 	# Write to utFH
 	# print "HEADER:  $String\n";
 	print utFH $String;
@@ -203,24 +245,25 @@ sub main
 	# "<div dir="ltr" style="text-align: left;" trbidi="on">
 	#   <a href="#09_ALMA_\1"><b><font size="5">Alma \1</font></b></a>
 	# </div>"
-	$String =~ s/^%Chapter (\d+)/<br \/><div dir="ltr" style="text-align: left;" trbidi="on">\n  <a id="${booknum}_${upcasebook}_$1"><b><font size="5">$bombook $1<\/font><\/b><\/a> <a href="#top">(go to top)<\/a>\n<\/div>/g;
+	$String =~ s/^%Chapter (\d+)/<br \/><div dir="ltr" style="text-align: left;" trbidi="on">\n  <a id="${booknum}_${upcasebook}_$1"><b><font size="5">$bombook $1<\/font><\/b><\/a> <a href="#TOPWEEK${weeknum}">(go to top)<\/a>\n<\/div>/g;
 
 	# 5. Replace "---" with "—"
 	$String =~ s/---/—/g;
 
 	# 6. Regex-replace "\footnote{.*}" with ""
+	$String =~ s/\\footnote{.*}//g;
 
 	# 7. Replace "``" with "&ldquo;"
-	$String =~ s/``/&ldquo/g;
+	$String =~ s/``/&ldquo;/g;
 
 	# 8. Replace "''" with "&rdquo;"
-	$String =~ s/''/&rdquo/g;
+	$String =~ s/''/&rdquo;/g;
 
 	# 9. Replace "\lq" with "&lsquo;"
-	$String =~ s/\\lq /&lsquo/g;
+	$String =~ s/\\lq /&lsquo;/g;
 
 	# 10. Replace "\rq" with "&rsquo;"
-	$String =~ s/\\rq /&rsquo/g;
+	$String =~ s/\\rq /&rsquo;/g;
 
 	# Write to utFH
 	if ($addholdover eq 1) {

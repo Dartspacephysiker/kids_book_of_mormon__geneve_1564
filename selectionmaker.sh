@@ -1,8 +1,13 @@
-weekno=27
+weekno=28
 
 # pdfpref=OUT/ICBoM__20__May_18-24__Mosiah_25-28;
 
-if [[ ${weekno} -eq 27 ]]
+if [[ ${weekno} -eq 28 ]]
+then
+    startpage=207;
+    stoppage=218;
+    pdfpref=OUT/ICBoM__28__July_6-12__Alma_30-31;
+elif [[ ${weekno} -eq 27 ]]
 then
     startpage=186;
     stoppage=207;
