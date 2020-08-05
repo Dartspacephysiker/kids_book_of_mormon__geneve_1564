@@ -56,7 +56,7 @@ sub main
 	$startchapter = 43;
 	$stopchapter = 52;
 	$readingstr = "Aug 3–9 (Week ${weeknum})";
-	$GoogleDrivelink = "";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1kEPQ6mY1gX3KyWyAt4Kan5n64YClwR9n/view?usp=sharing";
     } elsif( $weeknum eq 31 ){
 	$startchapter = 39;
 	$stopchapter = 42;
