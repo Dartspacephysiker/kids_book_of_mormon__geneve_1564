@@ -1,6 +1,7 @@
 Hecipe: 
 
 1. Set buffer mode to latex-mode, make fill paragraph 10000 or something like that.
+
 2. Highlight all text in buffer, run M-q to get rid of newlines in verses
 
 3. To fix Chapter markers, use this regex:
@@ -14,8 +15,7 @@ Hecipe:
 !!!NOTE, something not quite right with the above.
 !!!I guess what you really want to do is find
 
-"^[BOOKNAME] [0-9]+
-\(Chapter [0-9]+\)
+"^[BOOKNAME] [0-9]+ \(Chapter [0-9]+\)
 "
 Replace with
 
