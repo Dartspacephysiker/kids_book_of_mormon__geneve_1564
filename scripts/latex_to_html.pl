@@ -51,62 +51,80 @@ sub main
     my $stopchapter;
     my $readingstr;
     my $GoogleDrivelink;
+    my $whichbook;
 
-    if( $weeknum eq 33 ){
+    if( $weeknum eq 34 ){
+	$startchapter = 1;
+	$stopchapter = 6;
+	$readingstr = "Aug 17–23 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1aTn0SUuUCepuhcJ4kf24g0QKh5EOzfve/view?usp=sharing";
+	$whichbook = 10
+    } elsif( $weeknum eq 33 ){
 	$startchapter = 53;
 	$stopchapter = 63;
 	$readingstr = "Aug 10–16 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1QpuwVkuQt5rnqFS81eYOr-hYUHfyk7TP/view?usp=sharing";
+	$whichbook = 9
     } elsif( $weeknum eq 32 ){
 	$startchapter = 43;
 	$stopchapter = 52;
 	$readingstr = "Aug 3–9 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1kEPQ6mY1gX3KyWyAt4Kan5n64YClwR9n/view?usp=sharing";
+	$whichbook = 9
     } elsif( $weeknum eq 31 ){
 	$startchapter = 39;
 	$stopchapter = 42;
 	$readingstr = "July 27–Aug 2 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1O0roXdJxEQNcuuCvvkdrZF8Bln89URaS/view?usp=sharing";
+	$whichbook = 9
     } elsif( $weeknum eq 30 ){
 	$startchapter = 36;
 	$stopchapter = 38;
 	$readingstr = "July 20–26 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1zPZ4PEbuA3kOZCVH---mZGI_SqOz09bt/view?usp=sharing";
+	$whichbook = 9
     } elsif( $weeknum eq 29 ){
 	$startchapter = 32;
 	$stopchapter = 35;
 	$readingstr = "July 13–19 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1XWLseGzvap3YxmE7U9GV-JZtXGgI0vHu/view?usp=sharing";
+	$whichbook = 9
     } elsif( $weeknum eq 28 ){
 	$startchapter = 30;
 	$stopchapter = 31;
 	$readingstr = "July 6–12 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1E3BXZCO7CnZbLYcmj83l7RZ6BSCxppG3/view?usp=sharing";
+	$whichbook = 9
     } elsif($weeknum == 27){
 	$startchapter = 23;
 	$stopchapter = 29;
 	$readingstr = "June 29–July 5 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1-h6MIaaG6r7kUhgAlxfd42WJ2cqpIGEI/view?usp=sharing";
+	$whichbook = 9
     } elsif ($weeknum == 26){
 	$startchapter = 17;
 	$stopchapter = 22;
 	$readingstr = "June 22–28 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/10ZujvpmwmWV3nfqhthvjfjMf2LSp8cMx/view?usp=sharing";
+	$whichbook = 9
     } elsif ($weeknum == 25){
 	$startchapter = 13;
 	$stopchapter = 16;
 	$readingstr = "June 15–21 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1rHFdRQasZJEmIrc5Iw1fM3IBtPNKSdVO/view?usp=sharing";
+	$whichbook = 9
     } elsif ($weeknum == 24){
 	$startchapter = 8;
 	$stopchapter = 12;
 	$readingstr = "June 8–14 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1dP5Hz--e7HuHCGS58U1WmOHatPGV2U8c/view?usp=sharing";
+	$whichbook = 9
     } elsif ($weeknum == 23){
 	$startchapter = 5;
 	$stopchapter = 7;
 	$readingstr = "June 1–7 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1k8jQYEh76CdU6M9jTNwCOnpVmm0zOVCD/view?usp=sharing";
+	$whichbook = 9
     } else {
 	die "Couldn't locate the week number (${weeknum}) you're talking about!\n";
     }
@@ -118,7 +136,27 @@ sub main
     print("readingstr     : ${readingstr}\n");
     print("GoogleDrivelink: ${GoogleDrivelink}\n");
 
-    my $h3weekstr = "Week ${weeknum}: Alma ${startchapter}–${stopchapter}";
+    my $upcasebook = "YUCK";
+    my $booknum = "-99";
+    my $bombook = "NOTABOOK";
+    my $infil = "/NO/FILE";
+
+    if ($whichbook eq 9) {
+	$upcasebook = "ALMA";
+	$booknum = "09";
+	$bombook = 'Alma';
+	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
+    }
+    elsif ($whichbook eq 10){
+	$upcasebook = "HELAMAN";
+	$booknum = "10";
+	$bombook = 'Helaman';
+	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/10_helaman.tex'; 
+    } else {
+	die "Couldn't figure out which book!\n";
+    }
+
+    my $h3weekstr = "Week ${weeknum}: ${bombook} ${startchapter}–${stopchapter}";
     my $weekminusone = ${weeknum}-1;
 
     # Other variables
@@ -126,11 +164,7 @@ sub main
     my $curverse = -1;
     my @wantchapters = (${startchapter}..${stopchapter});
     my @gotchapters = ();
-    my $upcasebook = "ALMA";
-    my $booknum = "09";
-    my $bombook = 'Alma';
     my $headfil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/scripts/blogentry_header.html'; 
-    my $infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
     my $utfil = "/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/OUT/kids_bom_selection__${weeknum}__${bombook}_${startchapter}-${stopchapter}.html"; 
 
     my $holdoverstring = "";	# (sometimes) junk variable
