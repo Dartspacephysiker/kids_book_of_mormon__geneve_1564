@@ -1,4 +1,4 @@
-weekno=33
+weekno=34
 
 licensefile=../cclicense.pdf
 bomfile=../kids_bom.pdf
