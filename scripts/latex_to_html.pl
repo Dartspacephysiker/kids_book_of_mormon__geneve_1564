@@ -53,7 +53,13 @@ sub main
     my $GoogleDrivelink;
     my $whichbook;
 
-    if( $weeknum eq 34 ){
+    if( $weeknum eq 35 ){
+	$startchapter = 7;
+	$stopchapter = 12;
+	$readingstr = "Aug 24–30 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1IhL0SlwhbxlQ3TUzyq0BQDLDkkD00GfQ/view?usp=sharing";
+	$whichbook = 10
+    } elsif( $weeknum eq 34 ){
 	$startchapter = 1;
 	$stopchapter = 6;
 	$readingstr = "Aug 17–23 (Week ${weeknum})";
