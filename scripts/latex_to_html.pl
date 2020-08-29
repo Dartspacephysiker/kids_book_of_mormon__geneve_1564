@@ -183,6 +183,10 @@ sub main
     my $footcounter = 0;
     my $totfootcounter = 0;
 
+    print "REMEMBER TO TEST \redtext and the new \rq{} detector!";
+    print "REMEMBER TO TEST \redtext and the new \rq{} detector!";
+    print "REMEMBER TO TEST \redtext and the new \rq{} detector!";
+
     print "Getting $bombook chapters ${startchapter}--${stopchapter}\n\n";
     print "outputfile: $utfil\n";
     open(utFH, '>', $utfil) or die $!;
@@ -381,7 +385,11 @@ sub main
 	$String =~ s/\\lq\s/&lsquo;/g;
 
 	# 10. Replace "\rq" with "&rsquo;"
+	$String =~ s/\\rq{}/&rsquo; /g;
 	$String =~ s/\\rq\s/&rsquo;/g;
+
+	# 11. Replace "\redtext{" with '<span style="color: red;">'
+	$String =~ s/\\redtext\{(.*)}/<span style="color: red;">$1<\/span>/g;
 
 	# Write to utFH
 	if ($addholdover eq 1) {
