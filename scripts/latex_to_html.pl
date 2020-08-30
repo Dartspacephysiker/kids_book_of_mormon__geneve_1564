@@ -53,6 +53,8 @@ sub main
     my $GoogleDrivelink;
     my $whichbook;
 
+    my $WORDSOFJESUSCOLOR = "black";
+
     if( $weeknum eq 35 ){
 	$startchapter = 7;
 	$stopchapter = 12;
@@ -388,8 +390,8 @@ sub main
 	$String =~ s/\\rq{}/&rsquo; /g;
 	$String =~ s/\\rq\s/&rsquo;/g;
 
-	# 11. Replace "\redtext{" with '<span style="color: red;">'
-	$String =~ s/\\redtext\{(.*)}/<span style="color: red;">$1<\/span>/g;
+	# 11. Replace "\redtext" stuff with '<span style="color: red;">'
+	$String =~ s/\\redtext\{(.*)}/<span style="color: ${WORDSOFJESUSCOLOR};">$1<\/span>/g;
 
 	# Write to utFH
 	if ($addholdover eq 1) {
