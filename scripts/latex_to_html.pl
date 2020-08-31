@@ -55,7 +55,13 @@ sub main
 
     my $WORDSOFJESUSCOLOR = "black";
 
-    if( $weeknum eq 35 ){
+    if( $weeknum eq 36 ){
+	$startchapter = 13;
+	$stopchapter = 16;
+	$readingstr = "Aug 31–Sep 6 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1FMGoif1mWSbWtaiMsVcsU0SZz5p3AJ6p/view?usp=sharing";
+	$whichbook = 10
+    } elsif( $weeknum eq 35 ){
 	$startchapter = 7;
 	$stopchapter = 12;
 	$readingstr = "Aug 24–30 (Week ${weeknum})";
@@ -147,24 +153,35 @@ sub main
     my $upcasebook = "YUCK";
     my $booknum = "-99";
     my $bombook = "NOTABOOK";
+    my $bombooktitle = "NOTABOOK";
     my $infil = "/NO/FILE";
 
-    if ($whichbook eq 9) {
-	$upcasebook = "ALMA";
-	$booknum = "09";
-	$bombook = 'Alma';
-	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
+    if ($whichbook eq 11) {
+	$upcasebook = "3 NEPHI";
+	$booknum = "11";
+	$bombook = '3_Nephi';
+	$bombooktitle = '3 Nephi';
+	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/11_3_nephi.tex'; 
     }
     elsif ($whichbook eq 10){
 	$upcasebook = "HELAMAN";
 	$booknum = "10";
 	$bombook = 'Helaman';
+	$bombooktitle = 'Helaman';
 	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/10_helaman.tex'; 
-    } else {
+    }
+    elsif ($whichbook eq 9) {
+	$upcasebook = "ALMA";
+	$booknum = "09";
+	$bombook = 'Alma';
+	$bombooktitle = 'Alma';
+	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/09_alma.tex'; 
+    }
+    else {
 	die "Couldn't figure out which book!\n";
     }
 
-    my $h3weekstr = "Week ${weeknum}: ${bombook} ${startchapter}–${stopchapter}";
+    my $h3weekstr = "Week ${weeknum}: ${bombooktitle} ${startchapter}–${stopchapter}";
     my $weekminusone = ${weeknum}-1;
 
     # Other variables
@@ -185,11 +202,7 @@ sub main
     my $footcounter = 0;
     my $totfootcounter = 0;
 
-    print "REMEMBER TO TEST \redtext and the new \rq{} detector!";
-    print "REMEMBER TO TEST \redtext and the new \rq{} detector!";
-    print "REMEMBER TO TEST \redtext and the new \rq{} detector!";
-
-    print "Getting $bombook chapters ${startchapter}--${stopchapter}\n\n";
+    print "Getting $bombooktitle chapters ${startchapter}--${stopchapter}\n\n";
     print "outputfile: $utfil\n";
     open(utFH, '>', $utfil) or die $!;
       
@@ -276,7 +289,7 @@ sub main
 	    $footcounter = 0;
 
 	    if ( $1 ~~ @wantchapters ) {
-		print "Current chapter: $bombook $1\n";
+		print "Current chapter: $bombooktitle $1\n";
 	    }
 
         } 
@@ -315,7 +328,7 @@ sub main
 	# \2 "
         if($String =~ /^%$bombook (\d+):(\d+)/) { 
             # print "Found zis: $String\n"; 
-	    $String = "<!-- Alma $1:$2 -->\n<b>$2</b>";
+	    $String = "<!-- ${bombook} $1:$2 -->\n<b>$2</b>";
 	    $holdoverstring = $String;
 	    $addholdover = 1;
 	    $curverse = $2;
