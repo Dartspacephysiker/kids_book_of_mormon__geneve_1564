@@ -19,7 +19,7 @@ Hecipe:
 "
 Replace with
 
-"\1
+"%\1
 \\bchapter"
 
 4. Do Regexp I-search with C-M-s, then do M-e to copy this regex in:
