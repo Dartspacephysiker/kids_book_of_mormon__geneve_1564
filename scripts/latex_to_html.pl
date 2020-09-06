@@ -56,8 +56,8 @@ sub main
     my $WORDSOFJESUSCOLOR = "black";
 
     if( $weeknum eq 37 ){
-	$startchapter = 13;
-	$stopchapter = 16;
+	$startchapter = 1;
+	$stopchapter = 7;
 	$readingstr = "Sep 7–13 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1eyu_5flJ8qgQv0VhBfexy68DXrGd7V_D/view?usp=sharing";
 	$whichbook = 11;
@@ -262,7 +262,7 @@ sub main
 		# print "Current chapter: $bombook $1\n";
 
 		if ($isfirst eq 1) {
-		    $jumptostr = $jumptostr . " <a href=\"#${booknum}_${upcasebook}_$1\"><b>${bombook} ${1}</b></a>";
+		    $jumptostr = $jumptostr . " <a href=\"#${booknum}_${upcasebook}_$1\"><b>${bombooktitle} ${1}</b></a>";
 		    $isfirst = 0;
 		} else {
 		    $jumptostr = $jumptostr . " <a href=\"#${booknum}_${upcasebook}_$1\"><b> ${1}</b></a>";
@@ -332,9 +332,9 @@ sub main
 	# with
 	# "<!-- Alma \1:\2 -->
 	# \2 "
-        if($String =~ /^%$bombook (\d+):(\d+)/) { 
+        if($String =~ /^%$bombooktitle (\d+):(\d+)/) { 
             # print "Found zis: $String\n"; 
-	    $String = "<!-- ${bombook} $1:$2 -->\n<b>$2</b>";
+	    $String = "<!-- ${bombooktitle} $1:$2 -->\n<b>$2</b>";
 	    $holdoverstring = $String;
 	    $addholdover = 1;
 	    $curverse = $2;
@@ -359,7 +359,7 @@ sub main
 	# "<div dir="ltr" style="text-align: left;" trbidi="on">
 	#   <a href="#09_ALMA_\1"><b><font size="5">Alma \1</font></b></a>
 	# </div>"
-	$String =~ s/^%Chapter (\d+)/<br \/><div dir="ltr" style="text-align: left;" trbidi="on">\n  <a id="${booknum}_${upcasebook}_$1"><b><font size="5">$bombook $1<\/font><\/b><\/a> <a href="#TOPWEEK${weeknum}">(go to top)<\/a>\n<\/div>/g;
+	$String =~ s/^%Chapter (\d+)/<br \/><div dir="ltr" style="text-align: left;" trbidi="on">\n  <a id="${booknum}_${upcasebook}_$1"><b><font size="5">$bombooktitle $1<\/font><\/b><\/a> <a href="#TOPWEEK${weeknum}">(go to top)<\/a>\n<\/div>/g;
 
 	# 5. Replace "---" with "—"
 	$String =~ s/---/—/g;
