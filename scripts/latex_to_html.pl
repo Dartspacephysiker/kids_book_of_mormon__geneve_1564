@@ -55,84 +55,90 @@ sub main
 
     my $WORDSOFJESUSCOLOR = "black";
 
-    if( $weeknum eq 36 ){
+    if( $weeknum eq 37 ){
+	$startchapter = 13;
+	$stopchapter = 16;
+	$readingstr = "Sep 7–13 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1eyu_5flJ8qgQv0VhBfexy68DXrGd7V_D/view?usp=sharing";
+	$whichbook = 11;
+    } elsif( $weeknum eq 36 ){
 	$startchapter = 13;
 	$stopchapter = 16;
 	$readingstr = "Aug 31–Sep 6 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1FMGoif1mWSbWtaiMsVcsU0SZz5p3AJ6p/view?usp=sharing";
-	$whichbook = 10
+	$whichbook = 10;
     } elsif( $weeknum eq 35 ){
 	$startchapter = 7;
 	$stopchapter = 12;
 	$readingstr = "Aug 24–30 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1IhL0SlwhbxlQ3TUzyq0BQDLDkkD00GfQ/view?usp=sharing";
-	$whichbook = 10
+	$whichbook = 10;
     } elsif( $weeknum eq 34 ){
 	$startchapter = 1;
 	$stopchapter = 6;
 	$readingstr = "Aug 17–23 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1aTn0SUuUCepuhcJ4kf24g0QKh5EOzfve/view?usp=sharing";
-	$whichbook = 10
+	$whichbook = 10;
     } elsif( $weeknum eq 33 ){
 	$startchapter = 53;
 	$stopchapter = 63;
 	$readingstr = "Aug 10–16 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1QpuwVkuQt5rnqFS81eYOr-hYUHfyk7TP/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif( $weeknum eq 32 ){
 	$startchapter = 43;
 	$stopchapter = 52;
 	$readingstr = "Aug 3–9 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1kEPQ6mY1gX3KyWyAt4Kan5n64YClwR9n/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif( $weeknum eq 31 ){
 	$startchapter = 39;
 	$stopchapter = 42;
 	$readingstr = "July 27–Aug 2 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1O0roXdJxEQNcuuCvvkdrZF8Bln89URaS/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif( $weeknum eq 30 ){
 	$startchapter = 36;
 	$stopchapter = 38;
 	$readingstr = "July 20–26 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1zPZ4PEbuA3kOZCVH---mZGI_SqOz09bt/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif( $weeknum eq 29 ){
 	$startchapter = 32;
 	$stopchapter = 35;
 	$readingstr = "July 13–19 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1XWLseGzvap3YxmE7U9GV-JZtXGgI0vHu/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif( $weeknum eq 28 ){
 	$startchapter = 30;
 	$stopchapter = 31;
 	$readingstr = "July 6–12 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1E3BXZCO7CnZbLYcmj83l7RZ6BSCxppG3/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif($weeknum == 27){
 	$startchapter = 23;
 	$stopchapter = 29;
 	$readingstr = "June 29–July 5 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1-h6MIaaG6r7kUhgAlxfd42WJ2cqpIGEI/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif ($weeknum == 26){
 	$startchapter = 17;
 	$stopchapter = 22;
 	$readingstr = "June 22–28 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/10ZujvpmwmWV3nfqhthvjfjMf2LSp8cMx/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif ($weeknum == 25){
 	$startchapter = 13;
 	$stopchapter = 16;
 	$readingstr = "June 15–21 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1rHFdRQasZJEmIrc5Iw1fM3IBtPNKSdVO/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif ($weeknum == 24){
 	$startchapter = 8;
 	$stopchapter = 12;
 	$readingstr = "June 8–14 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1dP5Hz--e7HuHCGS58U1WmOHatPGV2U8c/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } elsif ($weeknum == 23){
 	$startchapter = 5;
 	$stopchapter = 7;
