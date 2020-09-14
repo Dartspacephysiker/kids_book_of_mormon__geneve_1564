@@ -55,7 +55,13 @@ sub main
 
     my $WORDSOFJESUSCOLOR = "black";
 
-    if( $weeknum eq 37 ){
+    if( $weeknum eq 38 ){
+	$startchapter = 8;
+	$stopchapter = 11;
+	$readingstr = "Sep 14–20 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1gLoQLBsRnXse6RFaylBhUsFIJML2luF2/view?usp=sharing";
+	$whichbook = 11;
+    } elsif( $weeknum eq 37 ){
 	$startchapter = 1;
 	$stopchapter = 7;
 	$readingstr = "Sep 7–13 (Week ${weeknum})";
@@ -406,7 +412,7 @@ sub main
 	$String =~ s/\\lq\s/&lsquo;/g;
 
 	# 10. Replace "\rq" with "&rsquo;"
-	$String =~ s/\\rq{}/&rsquo; /g;
+	$String =~ s/\\rq\{\}/&rsquo; /g;
 	$String =~ s/\\rq\s/&rsquo;/g;
 
 	# 11. Replace "\redtext" stuff with '<span style="color: red;">'
