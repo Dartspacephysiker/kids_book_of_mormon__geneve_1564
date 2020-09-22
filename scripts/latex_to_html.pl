@@ -55,7 +55,13 @@ sub main
 
     my $WORDSOFJESUSCOLOR = "black";
 
-    if( $weeknum eq 38 ){
+    if( $weeknum eq 39 ){
+	$startchapter = 12;
+	$stopchapter = 16;
+	$readingstr = "Sep 21–27 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1KzSBRCFV3rwh5kKNXfKoPH5lWFJhYeTL/view?usp=sharing";
+	$whichbook = 11;
+    } elsif( $weeknum eq 38 ){
 	$startchapter = 8;
 	$stopchapter = 11;
 	$readingstr = "Sep 14–20 (Week ${weeknum})";
