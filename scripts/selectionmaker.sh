@@ -1,4 +1,4 @@
-weekno=40
+weekno=39
 
 licensefile=../cclicense.pdf
 bomfile=../kids_bom.pdf
@@ -7,7 +7,7 @@ pdfoutdir=../OUT
 if [[ ${weekno} -eq 40 ]]
 then
     startpage=446;
-    stoppage=458;
+    stoppage=455;
     pdfpref=${pdfoutdir}/ICBoM__40__Sep_28-Oct_4__3_Nephi_17-19;
 elif [[ ${weekno} -eq 39 ]]
 then

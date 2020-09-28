@@ -59,7 +59,7 @@ sub main
 	$startchapter = 17;
 	$stopchapter = 19;
 	$readingstr = "Sep 28–Oct 4 (Week ${weeknum})";
-	$GoogleDrivelink = "";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1_l1f-wChf5mVrFWPLO-SKCc9sA8f-yIX/view?usp=sharing";
 	$whichbook = 11;
     } elsif( $weeknum eq 39 ){
 	$startchapter = 12;
