@@ -55,7 +55,13 @@ sub main
 
     my $WORDSOFJESUSCOLOR = "black";
 
-    if( $weeknum eq 43 ){
+    if( "$weeknum" eq "43a" ){
+	$startchapter = 1;
+	$stopchapter = 1;
+	$readingstr = "Onct 19–25 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1LSxWyYRw-sga_MI41POhmGBlsYRzDoxT/view?usp=sharing";
+	$whichbook = 12;
+    } elsif( $weeknum eq 43 ){
 	$startchapter = 27;
 	$stopchapter = 30;
 	$readingstr = "Oct 19–25 (Week ${weeknum})";
@@ -192,7 +198,21 @@ sub main
     my $bombooktitle = "NOTABOOK";
     my $infil = "/NO/FILE";
 
-    if ($whichbook eq 11) {
+    if ($whichbook eq 13) {
+	$upcasebook = "MORMON";
+	$booknum = "13";
+	$bombook = 'Mormon';
+	$bombooktitle = 'Mormon';
+	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/13_mormon.tex'; 
+    }
+    elsif ($whichbook eq 12) {
+	$upcasebook = "4 NEPHI";
+	$booknum = "12";
+	$bombook = '4_Nephi';
+	$bombooktitle = '4 Nephi';
+	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/12_4_nephi.tex'; 
+    }
+    elsif ($whichbook eq 11) {
 	$upcasebook = "3 NEPHI";
 	$booknum = "11";
 	$bombook = '3_Nephi';
