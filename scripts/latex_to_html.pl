@@ -55,7 +55,19 @@ sub main
 
     my $WORDSOFJESUSCOLOR = "black";
 
-    if( $weeknum eq 44 ){
+    if( $weeknum eq 46 ){
+	$startchapter = 1;
+	$stopchapter = 5;
+	$readingstr = "Nov 9–15 (Week ${weeknum})";
+	$GoogleDrivelink = "";
+	$whichbook = 14;
+    } elsif( $weeknum eq 45 ){
+	$startchapter = 7;
+	$stopchapter = 9;
+	$readingstr = "Nov 2–8 (Week ${weeknum})";
+	$GoogleDrivelink = "https://drive.google.com/file/d/1FukMt1Tx-_RMuCO17JztVM54GYhAfEFD/view?usp=sharing";
+	$whichbook = 13;
+    } elsif( $weeknum eq 44 ){
 	$startchapter = 1;
 	$stopchapter = 6;
 	$readingstr = "Oct 26–Nov 1 (Week ${weeknum})";
@@ -186,7 +198,7 @@ sub main
 	$stopchapter = 7;
 	$readingstr = "June 1–7 (Week ${weeknum})";
 	$GoogleDrivelink = "https://drive.google.com/file/d/1k8jQYEh76CdU6M9jTNwCOnpVmm0zOVCD/view?usp=sharing";
-	$whichbook = 9
+	$whichbook = 9;
     } else {
 	die "Couldn't locate the week number (${weeknum}) you're talking about!\n";
     }
@@ -204,7 +216,14 @@ sub main
     my $bombooktitle = "NOTABOOK";
     my $infil = "/NO/FILE";
 
-    if ($whichbook eq 13) {
+    if ($whichbook eq 14) {
+	$upcasebook = "ETHER";
+	$booknum = "14";
+	$bombook = 'Ether';
+	$bombooktitle = 'Ether';
+	$infil = '/SPENCEdata/Research/kids_book_of_mormon__geneve_1564/books/14_ether.tex'; 
+    }
+    elsif ($whichbook eq 13) {
 	$upcasebook = "MORMON";
 	$booknum = "13";
 	$bombook = 'Mormon';
